@@ -1,0 +1,453 @@
+[
+  {
+    "item": "minecraft:apple",
+    "textures": {
+      "full": "munchmunch:hunger_icons/apple_full",
+      "half": "munchmunch:hunger_icons/apple_half",
+      "empty": "munchmunch:hunger_icons/apple_empty",
+      "full_hunger": "munchmunch:hunger_icons/apple_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/apple_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/apple_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:baked_potato",
+    "textures": {
+      "full": "munchmunch:hunger_icons/baked_potato_full",
+      "half": "munchmunch:hunger_icons/baked_potato_half",
+      "empty": "munchmunch:hunger_icons/baked_potato_empty",
+      "full_hunger": "munchmunch:hunger_icons/baked_potato_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/baked_potato_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/baked_potato_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:beef",
+    "textures": {
+      "full": "munchmunch:hunger_icons/beef_full",
+      "half": "munchmunch:hunger_icons/beef_half",
+      "empty": "munchmunch:hunger_icons/beef_empty",
+      "full_hunger": "munchmunch:hunger_icons/beef_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/beef_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/beef_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:beetroot",
+    "textures": {
+      "full": "munchmunch:hunger_icons/beetroot_full",
+      "half": "munchmunch:hunger_icons/beetroot_half",
+      "empty": "munchmunch:hunger_icons/beetroot_empty",
+      "full_hunger": "munchmunch:hunger_icons/beetroot_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/beetroot_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/beetroot_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:beetroot_soup",
+    "textures": {
+      "full": "munchmunch:hunger_icons/beetroot_soup_full",
+      "half": "munchmunch:hunger_icons/beetroot_soup_half",
+      "empty": "munchmunch:hunger_icons/beetroot_soup_empty",
+      "full_hunger": "munchmunch:hunger_icons/beetroot_soup_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/beetroot_soup_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/beetroot_soup_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:bread",
+    "textures": {
+      "full": "munchmunch:hunger_icons/bread_full",
+      "half": "munchmunch:hunger_icons/bread_half",
+      "empty": "munchmunch:hunger_icons/bread_empty",
+      "full_hunger": "munchmunch:hunger_icons/bread_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/bread_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/bread_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:carrot",
+    "textures": {
+      "full": "munchmunch:hunger_icons/carrot_full",
+      "half": "munchmunch:hunger_icons/carrot_half",
+      "empty": "munchmunch:hunger_icons/carrot_empty",
+      "full_hunger": "munchmunch:hunger_icons/carrot_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/carrot_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/carrot_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:chicken",
+    "textures": {
+      "full": "munchmunch:hunger_icons/chicken_full",
+      "half": "munchmunch:hunger_icons/chicken_half",
+      "empty": "munchmunch:hunger_icons/chicken_empty",
+      "full_hunger": "munchmunch:hunger_icons/chicken_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/chicken_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/chicken_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:chorus_fruit",
+    "textures": {
+      "full": "munchmunch:hunger_icons/chorus_fruit_full",
+      "half": "munchmunch:hunger_icons/chorus_fruit_half",
+      "empty": "munchmunch:hunger_icons/chorus_fruit_empty",
+      "full_hunger": "munchmunch:hunger_icons/chorus_fruit_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/chorus_fruit_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/chorus_fruit_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cocoa_beans",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cocoa_beans_full",
+      "half": "munchmunch:hunger_icons/cocoa_beans_half",
+      "empty": "munchmunch:hunger_icons/cocoa_beans_empty",
+      "full_hunger": "munchmunch:hunger_icons/cocoa_beans_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cocoa_beans_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cocoa_beans_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cod",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cod_full",
+      "half": "munchmunch:hunger_icons/cod_half",
+      "empty": "munchmunch:hunger_icons/cod_empty",
+      "full_hunger": "munchmunch:hunger_icons/cod_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cod_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cod_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cookie",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cookie_full",
+      "half": "munchmunch:hunger_icons/cookie_half",
+      "empty": "munchmunch:hunger_icons/cookie_empty",
+      "full_hunger": "munchmunch:hunger_icons/cookie_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cookie_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cookie_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cooked_beef",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cooked_beef_full",
+      "half": "munchmunch:hunger_icons/cooked_beef_half",
+      "empty": "munchmunch:hunger_icons/cooked_beef_empty",
+      "full_hunger": "munchmunch:hunger_icons/cooked_beef_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cooked_beef_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cooked_beef_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cooked_chicken",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cooked_chicken_full",
+      "half": "munchmunch:hunger_icons/cooked_chicken_half",
+      "empty": "munchmunch:hunger_icons/cooked_chicken_empty",
+      "full_hunger": "munchmunch:hunger_icons/cooked_chicken_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cooked_chicken_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cooked_chicken_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cooked_cod",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cooked_cod_full",
+      "half": "munchmunch:hunger_icons/cooked_cod_half",
+      "empty": "munchmunch:hunger_icons/cooked_cod_empty",
+      "full_hunger": "munchmunch:hunger_icons/cooked_cod_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cooked_cod_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cooked_cod_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cooked_mutton",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cooked_mutton_full",
+      "half": "munchmunch:hunger_icons/cooked_mutton_half",
+      "empty": "munchmunch:hunger_icons/cooked_mutton_empty",
+      "full_hunger": "munchmunch:hunger_icons/cooked_mutton_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cooked_mutton_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cooked_mutton_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cooked_porkchop",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cooked_porkchop_full",
+      "half": "munchmunch:hunger_icons/cooked_porkchop_half",
+      "empty": "munchmunch:hunger_icons/cooked_porkchop_empty",
+      "full_hunger": "munchmunch:hunger_icons/cooked_porkchop_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cooked_porkchop_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cooked_porkchop_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cooked_rabbit",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cooked_rabbit_full",
+      "half": "munchmunch:hunger_icons/cooked_rabbit_half",
+      "empty": "munchmunch:hunger_icons/cooked_rabbit_empty",
+      "full_hunger": "munchmunch:hunger_icons/cooked_rabbit_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cooked_rabbit_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cooked_rabbit_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:cooked_salmon",
+    "textures": {
+      "full": "munchmunch:hunger_icons/cooked_salmon_full",
+      "half": "munchmunch:hunger_icons/cooked_salmon_half",
+      "empty": "munchmunch:hunger_icons/cooked_salmon_empty",
+      "full_hunger": "munchmunch:hunger_icons/cooked_salmon_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/cooked_salmon_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/cooked_salmon_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:dried_kelp",
+    "textures": {
+      "full": "munchmunch:hunger_icons/dried_kelp_full",
+      "half": "munchmunch:hunger_icons/dried_kelp_half",
+      "empty": "munchmunch:hunger_icons/dried_kelp_empty",
+      "full_hunger": "munchmunch:hunger_icons/dried_kelp_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/dried_kelp_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/dried_kelp_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:enchanted_golden_apple",
+    "textures": {
+      "full": "munchmunch:hunger_icons/enchanted_golden_apple_full",
+      "half": "munchmunch:hunger_icons/enchanted_golden_apple_half",
+      "empty": "munchmunch:hunger_icons/enchanted_golden_apple_empty",
+      "full_hunger": "munchmunch:hunger_icons/enchanted_golden_apple_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/enchanted_golden_apple_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/enchanted_golden_apple_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:golden_apple",
+    "textures": {
+      "full": "munchmunch:hunger_icons/golden_apple_full",
+      "half": "munchmunch:hunger_icons/golden_apple_half",
+      "empty": "munchmunch:hunger_icons/golden_apple_empty",
+      "full_hunger": "munchmunch:hunger_icons/golden_apple_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/golden_apple_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/golden_apple_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:golden_carrot",
+    "textures": {
+      "full": "munchmunch:hunger_icons/golden_carrot_full",
+      "half": "munchmunch:hunger_icons/golden_carrot_half",
+      "empty": "munchmunch:hunger_icons/golden_carrot_empty",
+      "full_hunger": "munchmunch:hunger_icons/golden_carrot_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/golden_carrot_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/golden_carrot_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:glow_berries",
+    "textures": {
+      "full": "munchmunch:hunger_icons/glow_berries_full",
+      "half": "munchmunch:hunger_icons/glow_berries_half",
+      "empty": "munchmunch:hunger_icons/glow_berries_empty",
+      "full_hunger": "munchmunch:hunger_icons/glow_berries_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/glow_berries_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/glow_berries_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:honey_bottle",
+    "textures": {
+      "full": "munchmunch:hunger_icons/honey_bottle_full",
+      "half": "munchmunch:hunger_icons/honey_bottle_half",
+      "empty": "munchmunch:hunger_icons/honey_bottle_empty",
+      "full_hunger": "munchmunch:hunger_icons/honey_bottle_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/honey_bottle_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/honey_bottle_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:kelp",
+    "textures": {
+      "full": "munchmunch:hunger_icons/kelp_full",
+      "half": "munchmunch:hunger_icons/kelp_half",
+      "empty": "munchmunch:hunger_icons/kelp_empty",
+      "full_hunger": "munchmunch:hunger_icons/kelp_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/kelp_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/kelp_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:melon_slice",
+    "textures": {
+      "full": "munchmunch:hunger_icons/melon_slice_full",
+      "half": "munchmunch:hunger_icons/melon_slice_half",
+      "empty": "munchmunch:hunger_icons/melon_slice_empty",
+      "full_hunger": "munchmunch:hunger_icons/melon_slice_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/melon_slice_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/melon_slice_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:mushroom_stew",
+    "textures": {
+      "full": "munchmunch:hunger_icons/mushroom_stew_full",
+      "half": "munchmunch:hunger_icons/mushroom_stew_half",
+      "empty": "munchmunch:hunger_icons/mushroom_stew_empty",
+      "full_hunger": "munchmunch:hunger_icons/mushroom_stew_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/mushroom_stew_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/mushroom_stew_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:mutton",
+    "textures": {
+      "full": "munchmunch:hunger_icons/mutton_full",
+      "half": "munchmunch:hunger_icons/mutton_half",
+      "empty": "munchmunch:hunger_icons/mutton_empty",
+      "full_hunger": "munchmunch:hunger_icons/mutton_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/mutton_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/mutton_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:poisonous_potato",
+    "textures": {
+      "full": "munchmunch:hunger_icons/poisonous_potato_full",
+      "half": "munchmunch:hunger_icons/poisonous_potato_half",
+      "empty": "munchmunch:hunger_icons/poisonous_potato_empty",
+      "full_hunger": "munchmunch:hunger_icons/poisonous_potato_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/poisonous_potato_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/poisonous_potato_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:pumpkin_pie",
+    "textures": {
+      "full": "munchmunch:hunger_icons/pumpkin_pie_full",
+      "half": "munchmunch:hunger_icons/pumpkin_pie_half",
+      "empty": "munchmunch:hunger_icons/pumpkin_pie_empty",
+      "full_hunger": "munchmunch:hunger_icons/pumpkin_pie_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/pumpkin_pie_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/pumpkin_pie_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:pufferfish",
+    "textures": {
+      "full": "munchmunch:hunger_icons/pufferfish_full",
+      "half": "munchmunch:hunger_icons/pufferfish_half",
+      "empty": "munchmunch:hunger_icons/pufferfish_empty",
+      "full_hunger": "munchmunch:hunger_icons/pufferfish_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/pufferfish_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/pufferfish_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:porkchop",
+    "textures": {
+      "full": "munchmunch:hunger_icons/porkchop_full",
+      "half": "munchmunch:hunger_icons/porkchop_half",
+      "empty": "munchmunch:hunger_icons/porkchop_empty",
+      "full_hunger": "munchmunch:hunger_icons/porkchop_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/porkchop_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/porkchop_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:rabbit",
+    "textures": {
+      "full": "munchmunch:hunger_icons/rabbit_full",
+      "half": "munchmunch:hunger_icons/rabbit_half",
+      "empty": "munchmunch:hunger_icons/rabbit_empty",
+      "full_hunger": "munchmunch:hunger_icons/rabbit_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/rabbit_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/rabbit_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:rabbit_stew",
+    "textures": {
+      "full": "munchmunch:hunger_icons/rabbit_stew_full",
+      "half": "munchmunch:hunger_icons/rabbit_stew_half",
+      "empty": "munchmunch:hunger_icons/rabbit_stew_empty",
+      "full_hunger": "munchmunch:hunger_icons/rabbit_stew_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/rabbit_stew_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/rabbit_stew_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:rotten_flesh",
+    "textures": {
+      "full": "munchmunch:hunger_icons/rotten_flesh_full",
+      "half": "munchmunch:hunger_icons/rotten_flesh_half",
+      "empty": "munchmunch:hunger_icons/rotten_flesh_empty",
+      "full_hunger": "munchmunch:hunger_icons/rotten_flesh_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/rotten_flesh_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/rotten_flesh_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:salmon",
+    "textures": {
+      "full": "munchmunch:hunger_icons/salmon_full",
+      "half": "munchmunch:hunger_icons/salmon_half",
+      "empty": "munchmunch:hunger_icons/salmon_empty",
+      "full_hunger": "munchmunch:hunger_icons/salmon_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/salmon_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/salmon_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:spider_eye",
+    "textures": {
+      "full": "munchmunch:hunger_icons/spider_eye_full",
+      "half": "munchmunch:hunger_icons/spider_eye_half",
+      "empty": "munchmunch:hunger_icons/spider_eye_empty",
+      "full_hunger": "munchmunch:hunger_icons/spider_eye_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/spider_eye_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/spider_eye_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:suspicious_stew",
+    "textures": {
+      "full": "munchmunch:hunger_icons/suspicious_stew_full",
+      "half": "munchmunch:hunger_icons/suspicious_stew_half",
+      "empty": "munchmunch:hunger_icons/suspicious_stew_empty",
+      "full_hunger": "munchmunch:hunger_icons/suspicious_stew_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/suspicious_stew_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/suspicious_stew_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:sweet_berries",
+    "textures": {
+      "full": "munchmunch:hunger_icons/sweet_berries_full",
+      "half": "munchmunch:hunger_icons/sweet_berries_half",
+      "empty": "munchmunch:hunger_icons/sweet_berries_empty",
+      "full_hunger": "munchmunch:hunger_icons/sweet_berries_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/sweet_berries_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/sweet_berries_empty_hunger"
+    }
+  },
+  {
+    "item": "minecraft:tropical_fish",
+    "textures": {
+      "full": "munchmunch:hunger_icons/tropical_fish_full",
+      "half": "munchmunch:hunger_icons/tropical_fish_half",
+      "empty": "munchmunch:hunger_icons/tropical_fish_empty",
+      "full_hunger": "munchmunch:hunger_icons/tropical_fish_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/tropical_fish_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/tropical_fish_empty_hunger"
+    }
+  }
+]

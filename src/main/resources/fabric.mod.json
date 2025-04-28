@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "munchmunch",
+  "version": "${version}",
+  "name": "Munch Munch!",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "jibblyjobbly"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/munchmunch/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.jibblyjobbly.munchmunch.MunchMunch"
+    ],
+    "client": [
+      "me.jibblyjobbly.munchmunch.MunchMunchClient"
+    ]
+  },
+  "mixins": [
+    "munchmunch.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.21.5",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

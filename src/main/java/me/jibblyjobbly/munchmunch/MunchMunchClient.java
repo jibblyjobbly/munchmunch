@@ -3,10 +3,7 @@ package me.jibblyjobbly.munchmunch;
 import me.jibblyjobbly.munchmunch.client.gui.render.HungerRenderer;
 import me.jibblyjobbly.munchmunch.config.MunchMunchConfig;
 import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
-
 import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
 import net.minecraft.util.Identifier;

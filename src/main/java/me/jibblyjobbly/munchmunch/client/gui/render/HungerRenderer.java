@@ -1,6 +1,5 @@
 package me.jibblyjobbly.munchmunch.client.gui.render;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import me.jibblyjobbly.munchmunch.MunchMunch;
 import me.jibblyjobbly.munchmunch.config.MunchMunchConfig;
 import me.jibblyjobbly.munchmunch.resource.FoodIconReloadListener;
@@ -12,7 +11,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.*;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameMode;
 

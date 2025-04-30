@@ -1,19 +1,15 @@
 package me.jibblyjobbly.munchmunch.client.gui.render;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import me.jibblyjobbly.munchmunch.MunchMunch;
-import me.jibblyjobbly.munchmunch.MunchMunchClient;
 import me.jibblyjobbly.munchmunch.resource.FoodIconReloadListener;
 import me.jibblyjobbly.munchmunch.resource.FoodTextures;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.render.*;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.registry.Registries;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameMode;
 
@@ -29,12 +25,10 @@ public class HungerRenderer {
 
         Map<Identifier, FoodTextures> map = FoodIconReloadListener.ICONS;
         Identifier id =  MunchMunch.lastEatenId;
-        FoodTextures tex;
-        if (id == null) {
-            tex = FoodIconReloadListener.DEFAULT_TEXTURES;
-        } else {
-            tex = map.get(id);
-        }
+        FoodTextures tex = map.getOrDefault(id, FoodIconReloadListener.DEFAULT_TEXTURES);
+
+        ItemStack stack = client.player.getMainHandStack();
+        boolean glint = stack.hasGlint();
 
         if (client.player.getGameMode() != GameMode.CREATIVE) {
             if (client.player.getGameMode() != GameMode.SPECTATOR) {
@@ -52,13 +46,25 @@ public class HungerRenderer {
                         identifierFull = tex.full();
                     }
                     int l = context.getScaledWindowWidth() / 2 + 91 - j * 8 - 9;
-                    context.drawGuiTexture(RenderLayer::getGuiTextured, identifierEmpty, l, context.getScaledWindowHeight() - 39, 9, 9);
-                    if (j * 2 + 1 < foodLevel) {
-                        context.drawGuiTexture(RenderLayer::getGuiTextured, identifierFull, l, context.getScaledWindowHeight() - 39, 9, 9);
-                    }
 
-                    if (j * 2 + 1 == foodLevel) {
-                        context.drawGuiTexture(RenderLayer::getGuiTextured, identifierHalf, l, context.getScaledWindowHeight() - 39, 9, 9);
+                    if (glint) {
+                        context.drawTexture(RenderLayer::getGuiTextured, identifierEmpty, l, context.getScaledWindowHeight() - 39, 0, 32, 9, 9, 9, 9);
+                        if (j * 2 + 1 < foodLevel) {
+                            context.drawGuiTexture(RenderLayer::getGuiTextured, identifierFull, l, context.getScaledWindowHeight() - 39, 9, 9);
+                        }
+
+                        if (j * 2 + 1 == foodLevel) {
+                            context.drawGuiTexture(RenderLayer::getGuiTextured, identifierHalf, l, context.getScaledWindowHeight() - 39, 9, 9);
+                        }
+                    } else {
+                        context.drawGuiTexture(RenderLayer::getGuiTextured, identifierEmpty, l, context.getScaledWindowHeight() - 39, 9, 9);
+                        if (j * 2 + 1 < foodLevel) {
+                            context.drawGuiTexture(RenderLayer::getGuiTextured, identifierFull, l, context.getScaledWindowHeight() - 39, 9, 9);
+                        }
+
+                        if (j * 2 + 1 == foodLevel) {
+                            context.drawGuiTexture(RenderLayer::getGuiTextured, identifierHalf, l, context.getScaledWindowHeight() - 39, 9, 9);
+                        }
                     }
                 }
             }

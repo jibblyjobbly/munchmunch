@@ -26,10 +26,10 @@
     "textures": {
       "full": "munchmunch:hunger_icons/beef_full",
       "half": "munchmunch:hunger_icons/beef_half",
-      "empty": "munchmunch:hunger_icons/beef_empty",
+      "empty": "munchmunch:hunger_icons/steak_empty",
       "full_hunger": "munchmunch:hunger_icons/beef_full_hunger",
       "half_hunger": "munchmunch:hunger_icons/beef_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/beef_empty_hunger"
+      "empty_hunger": "munchmunch:hunger_icons/steak_empty_hunger"
     }
   },
   {
@@ -81,10 +81,10 @@
     "textures": {
       "full": "munchmunch:hunger_icons/chicken_full",
       "half": "munchmunch:hunger_icons/chicken_half",
-      "empty": "munchmunch:hunger_icons/chicken_empty",
+      "empty": "munchmunch:hunger_icons/cooked_chicken_empty",
       "full_hunger": "munchmunch:hunger_icons/chicken_full_hunger",
       "half_hunger": "munchmunch:hunger_icons/chicken_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/chicken_empty_hunger"
+      "empty_hunger": "munchmunch:hunger_icons/cooked_chicken_empty_hunger"
     }
   },
   {
@@ -114,10 +114,10 @@
     "textures": {
       "full": "munchmunch:hunger_icons/cod_full",
       "half": "munchmunch:hunger_icons/cod_half",
-      "empty": "munchmunch:hunger_icons/cod_empty",
+      "empty": "munchmunch:hunger_icons/cooked_cod_empty",
       "full_hunger": "munchmunch:hunger_icons/cod_full_hunger",
       "half_hunger": "munchmunch:hunger_icons/cod_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/cod_empty_hunger"
+      "empty_hunger": "munchmunch:hunger_icons/cooked_cod_empty_hunger"
     }
   },
   {
@@ -158,10 +158,10 @@
     "textures": {
       "full": "munchmunch:hunger_icons/cooked_cod_full",
       "half": "munchmunch:hunger_icons/cooked_cod_half",
-      "empty": "munchmunch:hunger_icons/cooked_cod_empty",
+      "empty": "munchmunch:hunger_icons/cod_empty",
       "full_hunger": "munchmunch:hunger_icons/cooked_cod_full_hunger",
       "half_hunger": "munchmunch:hunger_icons/cooked_cod_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/cooked_cod_empty_hunger"
+      "empty_hunger": "munchmunch:hunger_icons/cod_empty_hunger"
     }
   },
   {
@@ -222,12 +222,12 @@
   {
     "item": "minecraft:enchanted_golden_apple",
     "textures": {
-      "full": "munchmunch:hunger_icons/enchanted_golden_apple_full",
-      "half": "munchmunch:hunger_icons/enchanted_golden_apple_half",
-      "empty": "munchmunch:hunger_icons/enchanted_golden_apple_empty",
-      "full_hunger": "munchmunch:hunger_icons/enchanted_golden_apple_full_hunger",
-      "half_hunger": "munchmunch:hunger_icons/enchanted_golden_apple_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/enchanted_golden_apple_empty_hunger"
+      "full": "munchmunch:hunger_icons/golden_apple_full",
+      "half": "munchmunch:hunger_icons/golden_apple_half",
+      "empty": "munchmunch:hunger_icons/golden_apple_empty",
+      "full_hunger": "munchmunch:hunger_icons/golden_apple_full_hunger",
+      "half_hunger": "munchmunch:hunger_icons/golden_apple_half_hunger",
+      "empty_hunger": "munchmunch:hunger_icons/golden_apple_empty_hunger"
     }
   },
   {
@@ -312,10 +312,10 @@
     "textures": {
       "full": "munchmunch:hunger_icons/mutton_full",
       "half": "munchmunch:hunger_icons/mutton_half",
-      "empty": "munchmunch:hunger_icons/mutton_empty",
+      "empty": "munchmunch:hunger_icons/cooked_mutton_empty",
       "full_hunger": "munchmunch:hunger_icons/mutton_full_hunger",
       "half_hunger": "munchmunch:hunger_icons/mutton_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/mutton_empty_hunger"
+      "empty_hunger": "munchmunch:hunger_icons/cooked_mutton_empty_hunger"
     }
   },
   {
@@ -356,10 +356,10 @@
     "textures": {
       "full": "munchmunch:hunger_icons/porkchop_full",
       "half": "munchmunch:hunger_icons/porkchop_half",
-      "empty": "munchmunch:hunger_icons/porkchop_empty",
+      "empty": "munchmunch:hunger_icons/cooked_porkchop_empty",
       "full_hunger": "munchmunch:hunger_icons/porkchop_full_hunger",
       "half_hunger": "munchmunch:hunger_icons/porkchop_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/porkchop_empty_hunger"
+      "empty_hunger": "munchmunch:hunger_icons/cooked_porkchop_empty_hunger"
     }
   },
   {
@@ -367,10 +367,10 @@
     "textures": {
       "full": "munchmunch:hunger_icons/rabbit_full",
       "half": "munchmunch:hunger_icons/rabbit_half",
-      "empty": "munchmunch:hunger_icons/rabbit_empty",
+      "empty": "munchmunch:hunger_icons/cooked_rabbit_empty",
       "full_hunger": "munchmunch:hunger_icons/rabbit_full_hunger",
       "half_hunger": "munchmunch:hunger_icons/rabbit_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/rabbit_empty_hunger"
+      "empty_hunger": "munchmunch:hunger_icons/cooked_rabbit_empty_hunger"
     }
   },
   {
@@ -400,10 +400,10 @@
     "textures": {
       "full": "munchmunch:hunger_icons/salmon_full",
       "half": "munchmunch:hunger_icons/salmon_half",
-      "empty": "munchmunch:hunger_icons/salmon_empty",
+      "empty": "munchmunch:hunger_icons/cooked_salmon_empty",
       "full_hunger": "munchmunch:hunger_icons/salmon_full_hunger",
       "half_hunger": "munchmunch:hunger_icons/salmon_half_hunger",
-      "empty_hunger": "munchmunch:hunger_icons/salmon_empty_hunger"
+      "empty_hunger": "munchmunch:hunger_icons/cooked_salmon_empty_hunger"
     }
   },
   {

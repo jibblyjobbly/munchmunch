@@ -1,6 +1,8 @@
 package me.jibblyjobbly.munchmunch.mixin;
 
 import me.jibblyjobbly.munchmunch.MunchMunch;
+import me.jibblyjobbly.munchmunch.config.Config;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.LivingEntity;
@@ -15,14 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ItemStack.class)
 public abstract class MixinItemStack {
-    @Inject(
-            method = "finishUsing",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;",
-                    shift = At.Shift.AFTER
-            )
-    )
+    @Inject(method = "finishUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;", shift = At.Shift.AFTER))
     private void onFinishUsing(World world, LivingEntity user, CallbackInfoReturnable<ItemStack> cir) {
         if (user instanceof ServerPlayerEntity player) {
             ItemStack stack = (ItemStack) (Object) this;
@@ -38,12 +33,14 @@ public abstract class MixinItemStack {
                     // Only log if hunger increased (item was actually consumed)
                     if (currentHunger > player.getHungerManager().getFoodLevel() - food.nutrition()) {
                         MunchMunch.lastEatenId = Registries.ITEM.getId(stack.getItem());
-                        MunchMunch.LOGGER.info("Burp! Fully ate: {}", MunchMunch.lastEatenId);
                     }
+
+                    Config config = AutoConfig.getConfigHolder(Config.class).getConfig();
+                    config.lastEatenFood = Registries.ITEM.getId(stack.getItem()).toString();
+                    AutoConfig.getConfigHolder(Config.class).save();
                 } else {
                     // Non-food consumable (e.g., potion)
                     MunchMunch.lastEatenId = Registries.ITEM.getId(stack.getItem());
-                    MunchMunch.LOGGER.info("Consumed: {}", MunchMunch.lastEatenId);
                 }
             }
         }

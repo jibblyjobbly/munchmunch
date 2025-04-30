@@ -1,9 +1,6 @@
 package me.jibblyjobbly.munchmunch.resource;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
@@ -33,42 +30,47 @@ public class FoodIconReloadListener implements SimpleSynchronousResourceReloadLi
 
     @Override
     public Identifier getFabricId() {
-        return Identifier.of("munchmunch", "foods");  // unique ID :contentReference[oaicite:4]{index=4}
+        return Identifier.of("munchmunch", "foods");
     }
 
     @Override
     public void reload(ResourceManager manager) {
         ICONS.clear();
 
-        for (String ns : manager.getAllNamespaces()) {                             // :contentReference[oaicite:0]{index=0}
-            // 2. Build the path data/<ns>/munchmunch/foods.json
+        for (String ns : manager.getAllNamespaces()) {
             Identifier path = Identifier.of(ns, "munchmunch/foods.json");
-            // 3. Grab ALL matching files (in pack load order) for that path
-            List<Resource> jsons = manager.getAllResources(path);                 // :contentReference[oaicite:1]{index=1}
+            List<Resource> jsons = manager.getAllResources(path);
             for (Resource res : jsons) {
                 try (var reader = new InputStreamReader(res.getInputStream())) {
-                    JsonArray arr = new Gson().fromJson(reader, JsonArray.class);
-                    for (JsonElement e : arr) {
-                        JsonObject obj       = e.getAsJsonObject();
-                        Identifier itemId    = Identifier.of(obj.get("item").getAsString());
-                        JsonObject t         = obj.getAsJsonObject("textures");
-                        FoodTextures tex     = new FoodTextures(
-                                Identifier.of(t.get("full").getAsString()),
-                                Identifier.of(t.get("half").getAsString()),
-                                Identifier.of(t.get("empty").getAsString()),
-                                Identifier.of(t.get("full_hunger").getAsString()),
-                                Identifier.of(t.get("half_hunger").getAsString()),
-                                Identifier.of(t.get("empty_hunger").getAsString())
-                        );
-                        // 4. Put or override in your map
-                        ICONS.put(itemId, tex);
+                    JsonArray arr = JsonParser.parseReader(reader).getAsJsonArray();
+                    for (JsonElement elem : arr) {
+                        JsonObject obj = elem.getAsJsonObject();
+                        Identifier itemId = Identifier.of(obj.get("item").getAsString());
+                        JsonObject tex  = obj.getAsJsonObject("textures");
+                        Identifier full  = tex.has("full")
+                                ? Identifier.of(tex.get("full").getAsString())
+                                : DEFAULT_TEXTURES.full();
+                        Identifier half  = tex.has("half")
+                                ? Identifier.of(tex.get("half").getAsString())
+                                : DEFAULT_TEXTURES.half();
+                        Identifier empty = tex.has("empty")
+                                ? Identifier.of(tex.get("empty").getAsString())
+                                : DEFAULT_TEXTURES.empty();
+                        Identifier fullHunger  = tex.has("full_hunger")
+                                ? Identifier.of(tex.get("full_hunger").getAsString())
+                                : DEFAULT_TEXTURES.fullHunger();
+                        Identifier halfHunger  = tex.has("half_hunger")
+                                ? Identifier.of(tex.get("half_hunger").getAsString())
+                                : DEFAULT_TEXTURES.halfHunger();
+                        Identifier emptyHunger = tex.has("empty_hunger")
+                                ? Identifier.of(tex.get("empty_hunger").getAsString())
+                                : DEFAULT_TEXTURES.emptyHunger();
+                        ICONS.put(itemId, new FoodTextures(full, half, empty, fullHunger, halfHunger, emptyHunger));
                     }
-                } catch (Exception ex) {
-                    LOGGER.error("Failed loading " + path, ex);
+                } catch (Exception e) {
+                    LOGGER.error("Failed loading {}", path, e);
                 }
             }
         }
-
-        LOGGER.info("Merged {} food entries from all namespaces", ICONS.size());
     }
 }

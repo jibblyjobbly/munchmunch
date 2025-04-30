@@ -3,15 +3,15 @@
   "id": "munchmunch",
   "version": "${version}",
   "name": "Munch Munch!",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Sets the icon of your hunger bar to the food you have last eaten! Delicious!",
   "authors": [
     "jibblyjobbly"
   ],
   "contact": {
     "homepage": "",
-    "sources": ""
+    "sources": "https://github.com/jibblyjobbly/munchmunchfabric"
   },
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/munchmunch/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -20,6 +20,12 @@
     ],
     "client": [
       "me.jibblyjobbly.munchmunch.MunchMunchClient"
+    ],
+    "preLaunch": [
+      "me.jibblyjobbly.munchmunch.prelaunch.MunchMunchPreLaunch"
+    ],
+    "modmenu": [
+      "me.jibblyjobbly.munchmunch.compat.ModMenuCompat"
     ]
   },
   "mixins": [

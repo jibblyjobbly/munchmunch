@@ -1,0 +1,8 @@
+{
+  "text.autoconfig.munchmunch.option.enableMod": "Enable Mod",
+  "text.autoconfig.munchmunch.option.useLastEatenFood": "Use Last Eaten Food",
+  "text.autoconfig.munchmunch.option.useLastEatenFood.@Tooltip": "Use the last eaten food as the hunger bar icon",
+  "text.autoconfig.munchmunch.option.tintedHungerIcon": "Tinted Hunger Icon",
+  "text.autoconfig.munchmunch.option.tintedHungerIcon.tintHungerIcon": "Tint Hunger Icon",
+  "text.autoconfig.munchmunch.option.tintedHungerIcon.hungerIconTint": "Hunger Icon Tint Color"
+}

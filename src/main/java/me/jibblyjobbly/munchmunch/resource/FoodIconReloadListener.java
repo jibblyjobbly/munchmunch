@@ -1,6 +1,7 @@
 package me.jibblyjobbly.munchmunch.resource;
 
 import com.google.gson.*;
+import me.jibblyjobbly.munchmunch.MunchMunchClient;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
@@ -14,9 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 public class FoodIconReloadListener implements SimpleSynchronousResourceReloadListener {
-    private static final Logger LOGGER = LoggerFactory.getLogger("MunchMunch");
+    private static final Logger LOGGER = LoggerFactory.getLogger(MunchMunchClient.MOD_ID);
     private static final Gson GSON = new Gson();
-    private static final Identifier FOODS_JSON = Identifier.of("munchmunch", "foods.json");
+    private static final Identifier FOODS_JSON = Identifier.of(MunchMunchClient.MOD_ID, "foods.json");
 
     public static final Map<Identifier, FoodTextures> ICONS = new HashMap<>();
     public static final FoodTextures DEFAULT_TEXTURES = new FoodTextures(
@@ -30,7 +31,7 @@ public class FoodIconReloadListener implements SimpleSynchronousResourceReloadLi
 
     @Override
     public Identifier getFabricId() {
-        return Identifier.of("munchmunch", "foods");
+        return Identifier.of(MunchMunchClient.MOD_ID, "foods");
     }
 
     @Override

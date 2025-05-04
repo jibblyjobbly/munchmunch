@@ -1,8 +1,44 @@
 {
-  "text.autoconfig.munchmunch.option.enableMod": "Enable Mod",
-  "text.autoconfig.munchmunch.option.useLastEatenFood": "Use Last Eaten Food",
-  "text.autoconfig.munchmunch.option.useLastEatenFood.@Tooltip": "Use the last eaten food as the hunger bar icon",
-  "text.autoconfig.munchmunch.option.tintedHungerIcon": "Tinted Hunger Icon",
-  "text.autoconfig.munchmunch.option.tintedHungerIcon.tintHungerIcon": "Tint Hunger Icon",
-  "text.autoconfig.munchmunch.option.tintedHungerIcon.hungerIconTint": "Hunger Icon Tint Color"
+  "text.autoconfig.munchmunch.title": "Munch Munch Config",
+
+  "text.autoconfig.munchmunch.option.useLastEatenFoodIcon": "Use Last Eaten Food Icon",
+  "text.autoconfig.munchmunch.option.useLastEatenFoodIcon.@Tooltip[0]": "If enabled, the hunger bar icons will change",
+  "text.autoconfig.munchmunch.option.useLastEatenFoodIcon.@Tooltip[1]": "to match the last food item eaten.",
+
+  "text.autoconfig.munchmunch.option.enableBiomeEffects": "Enable Biome Effects",
+  "text.autoconfig.munchmunch.option.enableBiomeEffects.@Tooltip[0]": "If enabled, visual effects like shivering in cold biomes",
+  "text.autoconfig.munchmunch.option.enableBiomeEffects.@Tooltip[1]": "and heat haze in hot biomes will be applied.",
+
+  "text.autoconfig.munchmunch.option.coldBiomeSettings": "Cold Biome Settings",
+  "text.autoconfig.munchmunch.option.coldBiomeSettings.enabled": "Enable Cold Effects",
+  "text.autoconfig.munchmunch.option.coldBiomeSettings.enabled.@Tooltip": "Enable shivering effect and snow particles in cold biomes.",
+  "text.autoconfig.munchmunch.option.coldBiomeSettings.shiverIntensity": "Shiver Intensity",
+  "text.autoconfig.munchmunch.option.coldBiomeSettings.shiverIntensity.@Tooltip": "Controls the amplitude (strength) of the shivering effect.",
+  "text.autoconfig.munchmunch.option.coldBiomeSettings.showSnowParticles": "Show Snow Particles",
+  "text.autoconfig.munchmunch.option.coldBiomeSettings.showSnowParticles.@Tooltip": "Show small snow particles falling around the hunger bar in cold biomes.",
+  "text.autoconfig.munchmunch.option.coldBiomeSettings.maxSnowParticles": "Max Snow Particles",
+  "text.autoconfig.munchmunch.option.coldBiomeSettings.maxSnowParticles.@Tooltip": "Maximum number of snow particles visible at once.",
+
+  "text.autoconfig.munchmunch.option.hotBiomeSettings": "Hot Biome Settings",
+  "text.autoconfig.munchmunch.option.hotBiomeSettings.enabled": "Enable Hot Effects",
+  "text.autoconfig.munchmunch.option.hotBiomeSettings.enabled.@Tooltip": "Enable the heat haze (waving) effect in hot biomes.",
+  "text.autoconfig.munchmunch.option.hotBiomeSettings.hazeIntensity": "Haze Intensity",
+  "text.autoconfig.munchmunch.option.hotBiomeSettings.hazeIntensity.@Tooltip": "Controls the amplitude (strength) of the heat haze effect.",
+
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings": "Eating Animation Settings",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.enabled": "Enable Eating Animation",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.enabled.@Tooltip": "Enable the ripple/wave animation when food is consumed.",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.rippleDurationMs": "Ripple Duration (ms)",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.rippleDurationMs.@Tooltip[0]": "How long the eating animation lasts",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.rippleDurationMs.@Tooltip[1]": "in milliseconds (1000ms = 1 second).",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.rippleIntensity": "Ripple Intensity",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.rippleIntensity.@Tooltip": "Controls the amplitude (strength/height) of the eating animation.",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.goldenFoodMultiplier": "Golden Food Multiplier",
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.goldenFoodMultiplier.@Tooltip": "Multiplier for ripple duration and intensity when eating golden apples/carrots (e.g., 1.5 = 150% stronger/longer).",
+
+  "text.autoconfig.munchmunch.option.idleAnimationSettings": "Idle Animation Settings",
+  "text.autoconfig.munchmunch.option.idleAnimationSettings.enabled": "Enable Idle Animation",
+  "text.autoconfig.munchmunch.option.idleAnimationSettings.enabled.@Tooltip": "Enable a subtle idle bobbing animation for the hunger icons.",
+  "text.autoconfig.munchmunch.option.idleAnimationSettings.bobbingIntensity": "Bobbing Intensity",
+  "text.autoconfig.munchmunch.option.idleAnimationSettings.bobbingIntensity.@Tooltip": "Controls the amplitude (height) of the idle bobbing effect."
 }

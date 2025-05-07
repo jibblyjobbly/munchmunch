@@ -2,6 +2,7 @@ package me.jibbly.munchmunch;
 
 import me.jibbly.munchmunch.client.gui.render.HudParticle;
 import me.jibbly.munchmunch.client.gui.render.HungerRenderer;
+import me.jibbly.munchmunch.client.resource.HungerIconResourceListener;
 import me.jibbly.munchmunch.config.MunchMunchConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
@@ -63,6 +64,8 @@ public class MunchMunchClient implements ClientModInitializer {
 
 		AutoConfig.register(MunchMunchConfig.class, GsonConfigSerializer::new);
 		config = AutoConfig.getConfigHolder(MunchMunchConfig.class).getConfig();
+
+		HungerIconResourceListener.getInstance().initialize();
 
 		HudLayerRegistrationCallback.EVENT.register(drawer -> {
 			MinecraftClient client = MinecraftClient.getInstance();

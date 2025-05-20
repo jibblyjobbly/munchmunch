@@ -18,6 +18,9 @@
     "client": [
       "me.jibbly.munchmunch.MunchMunchClient"
     ],
+    "preLaunch": [
+      "me.jibbly.munchmunch.prelaunch.MunchMunchPreLaunch"
+    ],
     "modmenu": [
       "me.jibbly.munchmunch.compat.ModMenuCompat"
     ]

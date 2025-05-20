@@ -1,8 +1,8 @@
 package me.jibbly.munchmunch.client.resource;
 
 import me.jibbly.munchmunch.MunchMunchClient;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.resource.ResourceManager;
@@ -11,13 +11,21 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.*;
 
 public class HungerIconResourceListener implements SimpleSynchronousResourceReloadListener {
+    public static final Identifier LISTENER_ID = Identifier.of(MunchMunchClient.MOD_ID, "hunger_sprites");
     private static final Logger LOGGER = LoggerFactory.getLogger("Munch Munch");
 
-    private final Map<Identifier, FoodResource> icons = new HashMap<>();
+    private final Map<Identifier, FoodResource> ICONS = new HashMap<>();
 
+    @Override
+    public Identifier getFabricId() {
+        return LISTENER_ID;
+    }
+
+    // before your loop, define:
     private static final List<String> STATES = List.of(
             "full_hunger",
             "half_hunger",
@@ -27,21 +35,10 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
             "empty"
     );
 
-    public void initialize() {
-        LOGGER.info("Registering HungerIconReloadListener");
-        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES)
-                .registerReloadListener(this);
-    }
-
-    @Override
-    public Identifier getFabricId() {
-        return Identifier.of(MunchMunchClient.MOD_ID, "hunger_icons");
-    }
-
     @Override
     public void reload(ResourceManager manager) {
-        LOGGER.info("=== HungerIconReloadListener.reload() ===");
-        icons.clear();
+        LOGGER.info("=== HungerSpritesReloadListener.reload() ===");
+        ICONS.clear();
 
         String base = "textures/gui/sprites/hunger";
         var found = manager.findResources(base, path -> path.getPath().endsWith(".png"));
@@ -75,35 +72,39 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
             String foodName = nameNoExt.substring(0, cut);
             String state    = matchedState;
             Identifier foodId = Identifier.of(resId.getNamespace(), foodName);
-            Identifier texId  = Identifier.of(
-                    resId.getNamespace(),
-                    base + "/" + folderName + "/" + fileName
-            );
+            Identifier texId  = Identifier.of(resId.getNamespace(), resId.getPath());
 
             LOGGER.info(" → {} [{}] → {}", foodName, state, texId);
-            icons.compute(foodId, (id, old) -> updateField(old, texId, slotFrom(state)));
+            ICONS.compute(foodId, (id, old) -> updateField(old, texId, slotFrom(state)));
         }
 
-        LOGGER.info("Reloaded {} food sprites", icons.size());
+        LOGGER.info("Reloaded {} food sprites", ICONS.size());
     }
 
+
+
+    public FoodResource getIconsFor(Item item) {
+        Identifier id = Registries.ITEM.getId(item);
+        return ICONS.getOrDefault(id, FoodResource.defaults());
+    }
 
     private enum Slot {
         FULL, HALF, EMPTY, FULL_HUNGER, HALF_HUNGER, EMPTY_HUNGER
     }
 
     private Slot slotFrom(String state) {
-        switch (state.toLowerCase(Locale.ROOT)) {
-            case "full":          return Slot.FULL;
-            case "half":          return Slot.HALF;
-            case "empty":         return Slot.EMPTY;
-            case "full_hunger":   return Slot.FULL_HUNGER;
-            case "half_hunger":   return Slot.HALF_HUNGER;
-            case "empty_hunger":  return Slot.EMPTY_HUNGER;
-            default:
+        return switch (state.toLowerCase(Locale.ROOT)) {
+            case "full" -> Slot.FULL;
+            case "half" -> Slot.HALF;
+            case "empty" -> Slot.EMPTY;
+            case "full_hunger" -> Slot.FULL_HUNGER;
+            case "half_hunger" -> Slot.HALF_HUNGER;
+            case "empty_hunger" -> Slot.EMPTY_HUNGER;
+            default -> {
                 LOGGER.warn("Unknown state '{}', skipping", state);
-                return null;
-        }
+                yield null;
+            }
+        };
     }
 
     private FoodResource updateField(FoodResource old, Identifier tex, Slot slot) {
@@ -113,33 +114,20 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
             LOGGER.debug("  • Creating new FoodResource for slot {}", slot);
         }
         return switch (slot) {
-            case FULL ->
-                    new FoodResource(tex, old.half(), old.empty(), old.fullHunger(), old.halfHunger(), old.emptyHunger());
-            case HALF ->
-                    new FoodResource(old.full(), tex, old.empty(), old.fullHunger(), old.halfHunger(), old.emptyHunger());
-            case EMPTY ->
-                    new FoodResource(old.full(), old.half(), tex, old.fullHunger(), old.halfHunger(), old.emptyHunger());
-            case FULL_HUNGER ->
-                    new FoodResource(old.full(), old.half(), old.empty(), tex, old.halfHunger(), old.emptyHunger());
-            case HALF_HUNGER ->
-                    new FoodResource(old.full(), old.half(), old.empty(), old.fullHunger(), tex, old.emptyHunger());
-            case EMPTY_HUNGER ->
-                    new FoodResource(old.full(), old.half(), old.empty(), old.fullHunger(), old.halfHunger(), tex);
+            case FULL         -> new FoodResource(tex,      old.half(),  old.empty(),  old.fullHunger(), old.halfHunger(), old.emptyHunger());
+            case HALF         -> new FoodResource(old.full(),  tex,         old.empty(),  old.fullHunger(), old.halfHunger(), old.emptyHunger());
+            case EMPTY        -> new FoodResource(old.full(),  old.half(),  tex,          old.fullHunger(), old.halfHunger(), old.emptyHunger());
+            case FULL_HUNGER  -> new FoodResource(old.full(),  old.half(),  old.empty(), tex,             old.halfHunger(), old.emptyHunger());
+            case HALF_HUNGER  -> new FoodResource(old.full(),  old.half(),  old.empty(), old.fullHunger(), tex,             old.emptyHunger());
+            case EMPTY_HUNGER -> new FoodResource(old.full(),  old.half(),  old.empty(), old.fullHunger(), old.halfHunger(), tex);
         };
     }
-
-    public FoodResource getIconsFor(Item item) {
-        Identifier id = Registries.ITEM.getId(item);
-        return icons.getOrDefault(id, defaults());
-    }
-
-    private static FoodResource defaults() { return FoodResource.defaults(); }
 
     public static HungerIconResourceListener getInstance() {
         return Holder.INSTANCE;
     }
 
-    private static class Holder {
+    private class Holder {
         private static final HungerIconResourceListener INSTANCE = new HungerIconResourceListener();
     }
 }

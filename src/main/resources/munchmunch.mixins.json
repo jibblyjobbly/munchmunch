@@ -2,11 +2,9 @@
 	"required": true,
 	"package": "me.jibbly.munchmunch.mixin",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"MixinItemStack"
-	],
 	"client": [
-		"MixinInGameHud"
+		"MixinInGameHud",
+		"MixinItem"
 	],
 	"injectors": {
 		"defaultRequire": 1

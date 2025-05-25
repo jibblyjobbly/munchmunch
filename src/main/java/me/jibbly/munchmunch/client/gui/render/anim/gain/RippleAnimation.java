@@ -30,8 +30,8 @@ public class RippleAnimation implements GainAnimation {
         int maxSlot   = Math.min(HungerRenderer.ICON_COUNT - 1, Math.max(0, foodLevel - 1));
 
         // if we've fully rippled all up to maxSlot, mark finished
-        float slotDuration = config.eatingAnimationSettings.gainAnimationSettings.rippleAnimationSettings.slotDurationTicks;
-        float slotDelayTicks = config.eatingAnimationSettings.gainAnimationSettings.rippleAnimationSettings.slotDelayTicks;
+        float slotDuration = 8;
+        float slotDelayTicks = 1;
         long endOfLast = (long)(slotDelayTicks * maxSlot + slotDuration);
         if (elapsed > endOfLast) {
             finished = true;
@@ -57,7 +57,7 @@ public class RippleAnimation implements GainAnimation {
         float upOnly = sine < 0 ? 0 : sine;
 
         // final upward offset
-        float amplitude = config.eatingAnimationSettings.gainAnimationSettings.rippleAnimationSettings.amplitude;
+        float amplitude = 5;
         return new Vector2f(0, -amplitude * upOnly);
     }
 

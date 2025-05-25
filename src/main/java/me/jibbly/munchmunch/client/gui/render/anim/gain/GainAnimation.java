@@ -14,6 +14,6 @@ public interface GainAnimation extends HungerAnimation {
     @Override
     default boolean shouldRun() {
         MunchMunchConfig config = MunchMunchClient.getConfig();
-        return config.eatingAnimationSettings.enabled && config.eatingAnimationSettings.gainAnimationSettings.enabled && config.eatingAnimationSettings.gainAnimationSettings.rippleAnimationSettings.enabled;
+        return config.eatingAnimationSettings.enabled && config.eatingAnimationSettings.gainAnimationSettings.enabled;
     }
 }

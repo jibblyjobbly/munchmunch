@@ -15,14 +15,10 @@ public class BobAnimation implements IdleAnimation {
             return new Vector2f(0, 0);
         }
 
-        MunchMunchConfig.EatingAnimationSettings.IdleAnimationSettings.BobAnimationSettings s = config.eatingAnimationSettings
-                .idleAnimationSettings
-                .bobAnimationSettings;
-
-        float amplitude       = s.amplitude;
-        float slotDelayTicks  = s.slotDelayTicks;
-        float slotDuration    = s.slotDurationTicks;
-        float cycleDelay      = s.cycleDelayTicks;
+        float amplitude       = 2;
+        float slotDelayTicks  = 5;
+        float slotDuration    = 12;
+        float cycleDelay      = 400;
         int   count           = HungerRenderer.ICON_COUNT;
 
         // total per-slot spacing plus the post-cycle pause

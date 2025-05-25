@@ -28,103 +28,14 @@ public class MunchMunchConfig implements ConfigData {
         @ConfigEntry.Gui.CollapsibleObject
         public GainAnimationSettings gainAnimationSettings = new GainAnimationSettings();
 
-        @ConfigEntry.Gui.CollapsibleObject
-        public LoseAnimationSettings loseAnimationSettings = new LoseAnimationSettings();
-
-        @ConfigEntry.Gui.CollapsibleObject
-        public EmptyAnimationSettings emptyAnimationSettings = new EmptyAnimationSettings();
-
-        @ConfigEntry.Gui.CollapsibleObject
-        public FullAnimationSettings fullAnimationSettings = new FullAnimationSettings();
-
         public static class IdleAnimationSettings {
             @ConfigEntry.Gui.Tooltip
             public boolean enabled = true;
-
-            @ConfigEntry.Gui.CollapsibleObject
-            public BobAnimationSettings bobAnimationSettings = new BobAnimationSettings();
-
-            public static class BobAnimationSettings {
-                @ConfigEntry.Gui.Tooltip
-                public boolean enabled = true;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-                public int amplitude = 2;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 2, max = 10)
-                public int slotDelayTicks = 5;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 4, max = 16)
-                public int slotDurationTicks = 12;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 100, max = 1000)
-                public int cycleDelayTicks = 400;
-            }
         }
 
         public static class GainAnimationSettings {
             @ConfigEntry.Gui.Tooltip
             public boolean enabled = true;
-
-            @ConfigEntry.Gui.CollapsibleObject
-            public RippleAnimationSettings rippleAnimationSettings = new RippleAnimationSettings();
-
-            @ConfigEntry.Gui.CollapsibleObject
-            public BulgeAnimationSettings bulgeAnimationSettings = new BulgeAnimationSettings();
-
-            public static class RippleAnimationSettings {
-                @ConfigEntry.Gui.Tooltip
-                public boolean enabled = true;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 3, max = 9)
-                public int amplitude = 5;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 1, max = 6)
-                public int slotDelayTicks = 1;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 2, max = 12)
-                public int slotDurationTicks = 8;
-            }
-
-            public static class BulgeAnimationSettings {
-                @ConfigEntry.Gui.Tooltip
-                public boolean enabled = true;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 101, max = 180)
-                public int maxScalePercent = 120;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 2, max = 7)
-                public int amplitude = 3;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
-                public int slotDelayTicks = 2;
-
-                @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 2, max = 10)
-                public int slotDurationTicks = 6;
-            }
-        }
-
-        public static class LoseAnimationSettings {
-
-        }
-
-        public static class EmptyAnimationSettings {
-
-        }
-
-        public static class FullAnimationSettings {
-
         }
     }
 

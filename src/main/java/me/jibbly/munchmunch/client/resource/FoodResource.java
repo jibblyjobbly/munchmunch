@@ -16,11 +16,11 @@ public record FoodResource(Identifier full, Identifier half, Identifier empty, I
 
     public static Identifier currentForegroundIcon(FoodResource icons, int foodLevel, int slot, boolean hasHungerEffect) {
         int foodThreshold = slot * 2 + 1;
-        boolean isFull = foodLevel >= foodThreshold + 1;
 
-        Identifier foregroundIcon;
+        Identifier foregroundIcon = null;
 
-        foregroundIcon = hasHungerEffect ? isFull ? icons.fullHunger() : icons.halfHunger() : isFull ? icons.full() : icons.half();
+        if (foodLevel >= foodThreshold + 1) foregroundIcon = hasHungerEffect ? icons.fullHunger : icons.full;
+        else if (foodLevel == foodThreshold) foregroundIcon = hasHungerEffect ? icons.halfHunger : icons.half;
 
         return foregroundIcon;
     }

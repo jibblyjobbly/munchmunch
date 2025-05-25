@@ -5,12 +5,12 @@ import net.minecraft.util.Identifier;
 public record FoodResource(Identifier full, Identifier half, Identifier empty, Identifier fullHunger, Identifier halfHunger, Identifier emptyHunger) {
     public static FoodResource defaults() {
         return new FoodResource(
-                Identifier.ofVanilla("hud/food_full"),
-                Identifier.ofVanilla("hud/food_half"),
-                Identifier.ofVanilla("hud/food_empty"),
-                Identifier.ofVanilla("hud/food_full_hunger"),
-                Identifier.ofVanilla("hud/food_half_hunger"),
-                Identifier.ofVanilla("hud/food_empty_hunger")
+                Identifier.ofVanilla("textures/gui/sprites/hud/food_full.png"),
+                Identifier.ofVanilla("textures/gui/sprites/hud/food_half.png"),
+                Identifier.ofVanilla("textures/gui/sprites/hud/food_empty.png"),
+                Identifier.ofVanilla("textures/gui/sprites/hud/food_full_hunger.png"),
+                Identifier.ofVanilla("textures/gui/sprites/hud/food_half_hunger.png"),
+                Identifier.ofVanilla("textures/gui/sprites/hud/food_empty_hunger.png")
         );
     }
 

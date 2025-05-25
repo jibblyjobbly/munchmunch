@@ -9,12 +9,15 @@ import me.jibbly.munchmunch.client.resource.HungerIconResourceListener;
 import me.jibbly.munchmunch.config.MunchMunchConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
+import net.fabricmc.fabric.api.event.registry.RegistryAttribute;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
@@ -24,6 +27,9 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.SimpleRegistry;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
@@ -31,6 +37,7 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -46,7 +53,12 @@ public class MunchMunchClient implements ClientModInitializer {
 
 	private static final Identifier HUNGER_LAYER = Identifier.of(MOD_ID, "hunger_layer");
 
-	private static int lastHunger = -1;
+	public static final RegistryKey<Registry<HungerState>> HUNGER_STATE_KEY = RegistryKey.ofRegistry(Identifier.of(MOD_ID, "hunger_state"));
+	public static final Registry<HungerState> HUNGER_STATE = FabricRegistryBuilder.createSimple(HUNGER_STATE_KEY)
+			.attribute(RegistryAttribute.SYNCED)
+			.buildAndRegister();
+
+	private static int lastFoodLevel = -1;
 
 	private static boolean cleanupPerformedThisSession = false;
 
@@ -116,9 +128,23 @@ public class MunchMunchClient implements ClientModInitializer {
 		AnimationManager.cleanupFinishedAnimation();
 
         if (client.player != null) {
-			if (client.player.getHungerManager().getFoodLevel() == 0) {
-				AnimationSelector.getInstance().setState(HungerState.EMPTY);
+			int current = client.player.getHungerManager().getFoodLevel();
+
+			if (lastFoodLevel < 0) {
+				lastFoodLevel = current;
+				return;
 			}
+
+			ItemStack lastUsed = client.player.getStackInHand(Hand.MAIN_HAND);
+
+			if (current > lastFoodLevel) {
+				if (lastUsed.contains(DataComponentTypes.FOOD)) {
+					setLastEatenFoodItem(lastUsed.getItem());
+					AnimationSelector.getInstance().setState(HungerState.GAIN);
+				}
+			}
+
+			lastFoodLevel = current;
 		}
 	}
 

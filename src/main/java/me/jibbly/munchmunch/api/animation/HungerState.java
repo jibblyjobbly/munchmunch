@@ -3,13 +3,6 @@ package me.jibbly.munchmunch.api.animation;
 import me.jibbly.munchmunch.MunchMunchClient;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.HugeBrownMushroomFeature;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class HungerState {
     private final Identifier id;

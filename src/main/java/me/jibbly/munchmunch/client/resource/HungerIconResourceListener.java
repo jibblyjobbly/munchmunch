@@ -2,17 +2,17 @@ package me.jibbly.munchmunch.client.resource;
 
 import me.jibbly.munchmunch.MunchMunchClient;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.resource.ResourceManager;
-import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class HungerIconResourceListener implements SimpleSynchronousResourceReloadListener {
     public static final Identifier LISTENER_ID = Identifier.of(MunchMunchClient.MOD_ID, "hunger_sprites");

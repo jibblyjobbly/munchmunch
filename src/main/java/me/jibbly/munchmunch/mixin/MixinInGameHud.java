@@ -1,6 +1,6 @@
 package me.jibbly.munchmunch.mixin;
 
-import net.minecraft.client.gui.DrawContext; // Need DrawContext import
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;

@@ -6,22 +6,14 @@ import me.jibbly.munchmunch.client.resource.FoodResource;
 import me.jibbly.munchmunch.client.resource.HungerIconResourceListener;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.*;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.structure.OceanRuinStructure;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class HungerRenderer {
@@ -29,8 +21,6 @@ public class HungerRenderer {
     public static final int ICON_WIDTH = 9;
     public static final int ICON_HEIGHT = 9;
     public static final int ICON_SPACING = 8;
-
-    private static final List<HudParticle> PARTICLES = new ArrayList<>();
 
     private static final AnimationManager animationManager = new AnimationManager();
 
@@ -40,37 +30,10 @@ public class HungerRenderer {
 
         float time = client.world.getTime() + tickCounter.getDynamicDeltaTicks();
 
-        BlockPos pos = client.player.getBlockPos();
-
-        if (client.world.getBiome(pos).isIn(ConventionalBiomeTags.IS_SNOWY)) {
-            float cx = context.getScaledWindowWidth() / 2f;
-            float cy = context.getScaledWindowHeight() - 39f;
-            if (client.world.random.nextFloat() < 0.2f) {
-                PARTICLES.add(HudParticle.createSnowParticle(cx, cy, client.world.random));
-            }
-        }
-
-        Iterator<HudParticle> it = PARTICLES.iterator();
-        while (it.hasNext()) {
-            HudParticle particle = it.next();
-            particle.tick();
-            if (!particle.isAlive()) {
-                it.remove();
-            } else if (!particle.isInFront()) {
-                particle.render(context);
-            }
-        }
-
         for (int slot = 0; slot < ICON_COUNT; ++slot) {
             Vector2f offset = animationManager.computeOffsets(slot, time);
             Vector2f scale = animationManager.computeScale(slot, time);
             renderIcon(context, offset.x, offset.y, scale, slot);
-        }
-
-        for (HudParticle particle : PARTICLES) {
-            if (particle.isInFront()) {
-                particle.render(context);
-            }
         }
     }
 

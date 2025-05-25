@@ -1,8 +1,6 @@
 package me.jibbly.munchmunch.client.gui.render.anim.idle;
 
-import me.jibbly.munchmunch.MunchMunchClient;
 import me.jibbly.munchmunch.client.gui.render.HungerRenderer;
-import me.jibbly.munchmunch.config.MunchMunchConfig;
 import net.minecraft.client.MinecraftClient;
 import org.joml.Vector2f;
 

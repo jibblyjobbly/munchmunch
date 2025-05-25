@@ -1,21 +1,19 @@
 package me.jibbly.munchmunch;
 
 import me.jibbly.munchmunch.api.animation.AnimationEntrypoint;
+import me.jibbly.munchmunch.api.animation.HungerState;
 import me.jibbly.munchmunch.client.gui.render.HungerRenderer;
 import me.jibbly.munchmunch.client.gui.render.anim.AnimationManager;
 import me.jibbly.munchmunch.client.gui.render.anim.AnimationSelector;
-import me.jibbly.munchmunch.api.animation.HungerState;
 import me.jibbly.munchmunch.client.resource.HungerIconResourceListener;
 import me.jibbly.munchmunch.config.MunchMunchConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -29,19 +27,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.SimpleRegistry;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
-import net.minecraft.util.*;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.WorldSavePath;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

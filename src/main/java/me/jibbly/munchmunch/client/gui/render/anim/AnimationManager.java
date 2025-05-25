@@ -10,14 +10,8 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class AnimationManager {
-    public static List<Supplier<HungerAnimation>> animations = new ArrayList<>();
     private static HungerAnimation activeAnimation;
     private final Random random = new Random();
-
-    public static void registerAnimation(Supplier<HungerAnimation> animation) {
-        animations.add(animation);
-        animation.get().reset();
-    }
 
     public HungerAnimation chooseAnimation() {
         if (activeAnimation != null) {
@@ -26,7 +20,7 @@ public class AnimationManager {
         }
 
         HungerState state = AnimationSelector.getInstance().getState();
-        List<Supplier<HungerAnimation>> filtered = animations.stream().filter(s -> s.get().getState() == state).toList();
+        List<Supplier<HungerAnimation>> filtered = AnimationRegsitry.getAll().stream().filter(s -> s.get().getState() == state).toList();
 
         if (filtered.isEmpty()) {
             MunchMunchClient.LOGGER.error("No animations for type {}", state);

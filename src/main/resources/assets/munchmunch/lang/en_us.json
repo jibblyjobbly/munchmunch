@@ -41,5 +41,8 @@
 
   "text.autoconfig.munchmunch.option.eatingAnimationSettings.loseAnimationSettings": "Lose Animation Settings",
   "text.autoconfig.munchmunch.option.eatingAnimationSettings.emptyAnimationSettings": "Empty Animation Settings",
-  "text.autoconfig.munchmunch.option.eatingAnimationSettings.fullAnimationSettings": "Full Animation Settings"
+  "text.autoconfig.munchmunch.option.eatingAnimationSettings.fullAnimationSettings": "Full Animation Settings",
+
+  "resourcePack.munchmunch.default.name": "Default Hunger Icons",
+  "resourcePack.munchmunch.default.description": "For Vanilla foods"
 }

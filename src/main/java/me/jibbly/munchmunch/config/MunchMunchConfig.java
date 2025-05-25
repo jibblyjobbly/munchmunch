@@ -61,8 +61,8 @@ public class MunchMunchConfig implements ConfigData {
                 public int slotDurationTicks = 12;
 
                 @ConfigEntry.Gui.Tooltip
-                @ConfigEntry.BoundedDiscrete(min = 20, max = 240)
-                public int cycleDelayTicks = 120;
+                @ConfigEntry.BoundedDiscrete(min = 100, max = 1000)
+                public int cycleDelayTicks = 400;
             }
         }
 

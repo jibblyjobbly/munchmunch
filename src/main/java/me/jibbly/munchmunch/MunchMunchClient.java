@@ -1,5 +1,6 @@
 package me.jibbly.munchmunch;
 
+import me.jibbly.munchmunch.api.animation.AnimationEntrypoint;
 import me.jibbly.munchmunch.client.gui.render.HungerRenderer;
 import me.jibbly.munchmunch.client.gui.render.anim.AnimationManager;
 import me.jibbly.munchmunch.client.gui.render.anim.AnimationSelector;
@@ -15,12 +16,16 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -51,11 +56,18 @@ public class MunchMunchClient implements ClientModInitializer {
 
 		AnimationSelector.getInstance().setState(HungerState.IDLE);
 
+		for (EntrypointContainer<AnimationEntrypoint> container : FabricLoader.getInstance().getEntrypointContainers("munchmunch", AnimationEntrypoint.class)) {
+			container.getEntrypoint().registerAnimations();
+		}
+
 		AutoConfig.register(MunchMunchConfig.class, GsonConfigSerializer::new);
 		config = AutoConfig.getConfigHolder(MunchMunchConfig.class).getConfig();
 
-		LOGGER.info("Reloading hunger sprites...");
 		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(HungerIconResourceListener.getInstance());
+
+		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(container -> {
+			ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of(MOD_ID, "default"), container, Text.translatable("resourcePack.munchmunch.default.name"), ResourcePackActivationType.DEFAULT_ENABLED);
+		});
 
 		HudLayerRegistrationCallback.EVENT.register(drawer -> {
 			MinecraftClient client = MinecraftClient.getInstance();
@@ -112,11 +124,6 @@ public class MunchMunchClient implements ClientModInitializer {
 
 	private static void onClientEndTick(MinecraftClient client) {
 		AnimationManager.cleanupFinishedAnimation();
-
-        if (client.player == null) return;
-        if (client.player.getHungerManager().getFoodLevel() == 0) {
-			AnimationSelector.getInstance().setState(HungerState.EMPTY);
-		}
 	}
 
 	@Nullable

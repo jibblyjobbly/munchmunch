@@ -1,7 +1,7 @@
 package me.jibbly.munchmunch.client.gui.render.anim;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.world.ClientWorld;
+import me.jibbly.munchmunch.api.animation.HungerAnimation;
+import me.jibbly.munchmunch.api.animation.HungerState;
 
 public class AnimationSelector {
     private HungerState state;

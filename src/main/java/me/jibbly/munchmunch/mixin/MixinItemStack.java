@@ -2,7 +2,7 @@ package me.jibbly.munchmunch.mixin;
 
 import me.jibbly.munchmunch.MunchMunchClient;
 import me.jibbly.munchmunch.client.gui.render.anim.AnimationSelector;
-import me.jibbly.munchmunch.client.gui.render.anim.HungerState;
+import me.jibbly.munchmunch.api.animation.HungerState;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;

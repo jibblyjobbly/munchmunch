@@ -1,4 +1,4 @@
-package me.jibbly.munchmunch.client.gui.render.anim;
+package me.jibbly.munchmunch.api.animation;
 
 import java.util.ArrayList;
 import java.util.List;

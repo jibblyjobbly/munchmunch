@@ -4,7 +4,7 @@ import me.jibbly.munchmunch.api.animation.AnimationEntrypoint;
 import me.jibbly.munchmunch.client.gui.render.HungerRenderer;
 import me.jibbly.munchmunch.client.gui.render.anim.AnimationManager;
 import me.jibbly.munchmunch.client.gui.render.anim.AnimationSelector;
-import me.jibbly.munchmunch.client.gui.render.anim.HungerState;
+import me.jibbly.munchmunch.api.animation.HungerState;
 import me.jibbly.munchmunch.client.resource.HungerIconResourceListener;
 import me.jibbly.munchmunch.config.MunchMunchConfig;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -76,16 +76,6 @@ public class MunchMunchClient implements ClientModInitializer {
 			}
 		});
 
-		UseItemCallback.EVENT.register((player, world, hand) -> {
-			ItemStack stack = player.getStackInHand(hand);
-
-			if (!stack.contains(DataComponentTypes.FOOD)) return ActionResult.PASS;
-
-			AnimationSelector.getInstance().setState(HungerState.EATING);
-
-			return ActionResult.PASS;
-		});
-
 		ClientLifecycleEvents.CLIENT_STARTED.register(client -> {
 			if (!cleanupPerformedThisSession) {
 				cleanupWorldConfigData(client);
@@ -124,6 +114,12 @@ public class MunchMunchClient implements ClientModInitializer {
 
 	private static void onClientEndTick(MinecraftClient client) {
 		AnimationManager.cleanupFinishedAnimation();
+
+        if (client.player != null) {
+			if (client.player.getHungerManager().getFoodLevel() == 0) {
+				AnimationSelector.getInstance().setState(HungerState.EMPTY);
+			}
+		}
 	}
 
 	@Nullable

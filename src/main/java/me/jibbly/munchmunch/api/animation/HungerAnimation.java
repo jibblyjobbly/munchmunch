@@ -1,4 +1,4 @@
-package me.jibbly.munchmunch.client.gui.render.anim;
+package me.jibbly.munchmunch.api.animation;
 
 import org.joml.Vector2f;
 
@@ -12,5 +12,6 @@ public interface HungerAnimation {
         return new Vector2f(1f, 1f);
     }
     boolean isFinished();
+    default boolean isTimed() { return true; }
     default void reset() {}
 }

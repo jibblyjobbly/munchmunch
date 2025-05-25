@@ -4,6 +4,7 @@ import me.jibbly.munchmunch.MunchMunchClient;
 import me.jibbly.munchmunch.api.animation.AnimationRegsitry;
 import me.jibbly.munchmunch.api.animation.HungerAnimation;
 import me.jibbly.munchmunch.api.animation.HungerState;
+import me.jibbly.munchmunch.client.gui.render.anim.gain.RippleAnimation;
 import org.joml.Vector2f;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class AnimationManager {
                 return chooseAnimation();
             }
 
-            return new BaseAnimation();
+            return new RippleAnimation();
         }
 
         HungerAnimation next = pool.get(random.nextInt(pool.size())).get();

@@ -20,6 +20,9 @@
     ],
     "modmenu": [
       "me.jibbly.munchmunch.compat.ModMenuCompat"
+    ],
+    "munchmunch": [
+      "me.jibbly.munchmunch.client.gui.render.anim.HungerAnimationEntrypoint"
     ]
   },
   "mixins": [
@@ -29,7 +32,10 @@
     "fabricloader": ">=0.16.10",
     "minecraft": "~1.21.5",
     "java": ">=21",
-    "fabric-api": "*",
-    "cloth-config": "*"
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "cloth-config": "*",
+    "modmenu": "*"
   }
 }

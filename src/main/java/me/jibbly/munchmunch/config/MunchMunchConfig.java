@@ -11,7 +11,7 @@ import java.util.Map;
 @Config(name = MunchMunchClient.MOD_ID)
 public class MunchMunchConfig implements ConfigData {
 
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.RequiresRestart(false)
     public boolean useLastEatenFoodIcon = true;
 

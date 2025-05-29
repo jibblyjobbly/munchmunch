@@ -22,6 +22,6 @@ public interface IdleAnimation extends HungerAnimation {
     @Override
     default boolean shouldRun() {
         MunchMunchConfig config = MunchMunchClient.getConfig();
-        return config.eatingAnimationSettings.enabled;
+        return config.eatingAnimationSettings.enabled && config.eatingAnimationSettings.idleAnimationSettings.enabled;
     }
 }

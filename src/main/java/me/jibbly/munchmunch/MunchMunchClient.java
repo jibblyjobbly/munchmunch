@@ -14,6 +14,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -21,7 +22,10 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -29,9 +33,11 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.WorldSavePath;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,14 +62,14 @@ public class MunchMunchClient implements ClientModInitializer {
 			.attribute(RegistryAttribute.SYNCED)
 			.buildAndRegister();
 
+	public static Item lastUsed;
+
 	private static int lastFoodLevel = -1;
 
 	private static boolean cleanupPerformedThisSession = false;
 
 	@Override
 	public void onInitializeClient() {
-		LOGGER.info("Initializing MunchMunch...");
-
 		AnimationSelector.getInstance().setState(HungerState.IDLE);
 
 		for (EntrypointContainer<AnimationEntrypoint> container : FabricLoader.getInstance().getEntrypointContainers("munchmunch", AnimationEntrypoint.class)) {
@@ -78,6 +84,8 @@ public class MunchMunchClient implements ClientModInitializer {
 		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(container -> {
 			ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of(MOD_ID, "default"), container, Text.translatable("resourcePack.munchmunch.default.name"), ResourcePackActivationType.DEFAULT_ENABLED);
 		});
+
+		UseItemCallback.EVENT.register(MunchMunchClient::onUseItem);
 
 		HudLayerRegistrationCallback.EVENT.register(drawer -> {
 			MinecraftClient client = MinecraftClient.getInstance();
@@ -94,8 +102,6 @@ public class MunchMunchClient implements ClientModInitializer {
 		});
 
 		ClientTickEvents.END_CLIENT_TICK.register(MunchMunchClient::onClientEndTick);
-
-		LOGGER.info("MunchMunch Initialized!");
 	}
 
 	@Nullable
@@ -122,28 +128,19 @@ public class MunchMunchClient implements ClientModInitializer {
 
 	public static MunchMunchConfig getConfig() { return config; }
 
+	private static ActionResult onUseItem(PlayerEntity player, World world, Hand hand) {
+		if (world.isClient) {
+			ItemStack stack = player.getStackInHand(hand);
+			if (stack.contains(DataComponentTypes.FOOD)) {
+				lastUsed = stack.getItem();
+			}
+		}
+
+		return ActionResult.PASS;
+	}
+
 	private static void onClientEndTick(MinecraftClient client) {
 		AnimationManager.cleanupFinishedAnimation();
-
-        if (client.player != null) {
-			int current = client.player.getHungerManager().getFoodLevel();
-
-			if (lastFoodLevel < 0) {
-				lastFoodLevel = current;
-				return;
-			}
-
-			ItemStack lastUsed = client.player.getStackInHand(Hand.MAIN_HAND);
-
-			if (current > lastFoodLevel) {
-				if (lastUsed.contains(DataComponentTypes.FOOD)) {
-					setLastEatenFoodItem(lastUsed.getItem());
-					AnimationSelector.getInstance().setState(HungerState.GAIN);
-				}
-			}
-
-			lastFoodLevel = current;
-		}
 	}
 
 	@Nullable
@@ -183,7 +180,6 @@ public class MunchMunchClient implements ClientModInitializer {
 			return;
 		}
 
-		LOGGER.info("Checking for old singleplayer world data in Munch Munch! config...");
 		Path savesDir = client.runDirectory.toPath().resolve("saves");
 		Set<String> currentSaveDirs;
 
@@ -202,11 +198,8 @@ public class MunchMunchClient implements ClientModInitializer {
 				.collect(Collectors.toSet());
 
 		if (!keysToRemove.isEmpty()) {
-			LOGGER.info("Removing {} old world entries from config: {}", keysToRemove.size(), keysToRemove);
 			keysToRemove.forEach(config.worldLastEatenFoodMap::remove);
 			AutoConfig.getConfigHolder(MunchMunchConfig.class).save();
-		} else {
-			LOGGER.info("No old singleplayer world data found to remove");
 		}
 	}
 }

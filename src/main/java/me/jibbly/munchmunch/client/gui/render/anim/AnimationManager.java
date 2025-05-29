@@ -27,8 +27,6 @@ public class AnimationManager {
         List<Supplier<HungerAnimation>> pool = AnimationRegsitry.getAll().stream().filter(a -> a.get().getState() == state).toList();
 
         if (pool.isEmpty()) {
-            MunchMunchClient.LOGGER.warn("No animations registered for state {}", state);
-
             if (state != HungerState.IDLE) {
                 AnimationSelector.getInstance().setState(HungerState.IDLE);
                 return chooseAnimation();
@@ -42,28 +40,6 @@ public class AnimationManager {
         active = next;
         return active;
     }
-
-//    public HungerAnimation chooseAnimation() {
-//        if (activeAnimation != null) {
-//            if (!activeAnimation.isFinished()) return activeAnimation;
-//            activeAnimation.reset();
-//        }
-//
-//        HungerState state = AnimationSelector.getInstance().getState();
-//        List<Supplier<HungerAnimation>> filtered = AnimationRegsitry.getAll().stream().filter(s -> s.get().getState() == state).toList();
-//
-//        if (filtered.isEmpty()) {
-//            MunchMunchClient.LOGGER.error("No animations for type {}", state);
-//            return null;
-//        }
-//
-//        HungerAnimation placeholder = filtered.get(random.nextInt(filtered.size())).get();
-//
-//        MunchMunchClient.LOGGER.info("Playing animation {} for state {}", placeholder, placeholder.getState());
-//
-//        activeAnimation = placeholder;
-//        return placeholder;
-//    }
 
     public static void cleanupFinishedAnimation() {
         if (active != null) {

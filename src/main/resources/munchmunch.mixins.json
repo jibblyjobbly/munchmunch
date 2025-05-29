@@ -1,11 +1,12 @@
 {
-	"required": true,
-	"package": "me.jibbly.munchmunch.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"client": [
-		"MixinInGameHud"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "me.jibbly.munchmunch.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MixinClientPlayerEntity",
+    "MixinInGameHud"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }

@@ -2,8 +2,7 @@
   "text.autoconfig.munchmunch.title": "MunchMunch Config",
 
   "text.autoconfig.munchmunch.option.useLastEatenFoodIcon": "Use Last Eaten Food Icon",
-  "text.autoconfig.munchmunch.option.useLastEatenFoodIcon.@Tooltip.0": "Show the icon of the last food you ate in the HUD.",
-  "text.autoconfig.munchmunch.option.useLastEatenFoodIcon.@Tooltip.1": "Disable this to hide the last-eaten-food icon.",
+  "text.autoconfig.munchmunch.option.useLastEatenFoodIcon.@Tooltip": "Show the icon of the last food you ate in the HUD.",
 
   "text.autoconfig.munchmunch.option.eatingAnimationSettings": "Eating Animation Settings",
   "text.autoconfig.munchmunch.option.eatingAnimationSettings.enabled": "Enable Eating Animations",

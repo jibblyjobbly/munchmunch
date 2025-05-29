@@ -25,7 +25,6 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
         return LISTENER_ID;
     }
 
-    // before your loop, define:
     private static final List<String> STATES = List.of(
             "full_hunger",
             "half_hunger",
@@ -37,25 +36,20 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
 
     @Override
     public void reload(ResourceManager manager) {
-        LOGGER.info("=== HungerSpritesReloadListener.reload() ===");
         ICONS.clear();
 
         String base = "textures/gui/sprites/hunger";
         var found = manager.findResources(base, path -> path.getPath().endsWith(".png"));
-        LOGGER.info("Found {} PNGs under '{}'", found.size(), base);
 
         for (Identifier resId : found.keySet()) {
-            LOGGER.debug("Inspecting {}", resId);
 
             String[] parts = resId.getPath().split("/");
             if (parts.length != 6) {
                 LOGGER.warn(" → unexpected path structure ({} parts): {}", parts.length, resId.getPath());
                 continue;
             }
-            String folderName = parts[4];    // e.g. "cooked_porkchop"
-            String fileName   = parts[5];    // e.g. "cooked_porkchop_full_hunger.png"
+            String fileName   = parts[5];
 
-            // ---- new matching logic ----
             String nameNoExt = fileName.substring(0, fileName.length() - 4);
             String matchedState = null;
             for (String s : STATES) {
@@ -65,7 +59,6 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
                 }
             }
             if (matchedState == null) {
-                LOGGER.warn(" → file '{}' has no known state suffix", fileName);
                 continue;
             }
             int cut = nameNoExt.length() - matchedState.length() - 1;
@@ -74,11 +67,8 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
             Identifier foodId = Identifier.of(resId.getNamespace(), foodName);
             Identifier texId  = Identifier.of(resId.getNamespace(), resId.getPath());
 
-            LOGGER.info(" → {} [{}] → {}", foodName, state, texId);
             ICONS.compute(foodId, (id, old) -> updateField(old, texId, slotFrom(state)));
         }
-
-        LOGGER.info("Reloaded {} food sprites", ICONS.size());
     }
 
 
@@ -100,10 +90,7 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
             case "full_hunger" -> Slot.FULL_HUNGER;
             case "half_hunger" -> Slot.HALF_HUNGER;
             case "empty_hunger" -> Slot.EMPTY_HUNGER;
-            default -> {
-                LOGGER.warn("Unknown state '{}', skipping", state);
-                yield null;
-            }
+            default -> null;
         };
     }
 
@@ -111,7 +98,6 @@ public class HungerIconResourceListener implements SimpleSynchronousResourceRelo
         if (slot == null) return old;
         if (old == null) {
             old = new FoodResource(null, null, null, null, null, null);
-            LOGGER.debug("  • Creating new FoodResource for slot {}", slot);
         }
         return switch (slot) {
             case FULL         -> new FoodResource(tex,      old.half(),  old.empty(),  old.fullHunger(), old.halfHunger(), old.emptyHunger());

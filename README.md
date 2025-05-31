@@ -1,7 +1,7 @@
 # Munch Munch!
 
-![Modrinth badge](https://img.shields.io/badge/modrinth-gray?logo=modrinth)
-![Curseforge badge](https://img.shields.io/badge/curseforge-gray?logo=curseforge)
+![Modrinth Badge](https://img.shields.io/badge/modrinth-gray?logo=modrinth&link=https%3A%2F%2Fwww.curseforge.com%2Fminecraft%2Fmc-mods%2Fmunch-munch)
+![Curseforge badge](https://img.shields.io/badge/curseforge-gray?logo=curseforge&link=https%3A%2F%2Fwww.modrinth.com%2Fmod%2F%2Fmunchmunch)
 ### You are what you eat! See your hunger bar change to the food you're enjoying - delicious! 😋
 
 A mod for anyone who wants to take personalisation of their Minecraft experience to the next level.

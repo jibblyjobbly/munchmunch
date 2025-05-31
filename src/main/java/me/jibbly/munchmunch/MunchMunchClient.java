@@ -48,8 +48,6 @@ public class MunchMunchClient implements ClientModInitializer {
 
 	private static MunchMunchConfig config;
 
-	private static final Identifier HUNGER_LAYER = Identifier.of(MOD_ID, "hunger_layer");
-
 	public static final RegistryKey<Registry<HungerState>> HUNGER_STATE_KEY = RegistryKey.ofRegistry(Identifier.of(MOD_ID, "hunger_state"));
 	public static final Registry<HungerState> HUNGER_STATE = FabricRegistryBuilder.createSimple(HUNGER_STATE_KEY)
 			.attribute(RegistryAttribute.SYNCED)
@@ -75,7 +73,7 @@ public class MunchMunchClient implements ClientModInitializer {
 		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(HungerIconResourceListener.getInstance());
 
 		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(container -> {
-			ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of(MOD_ID, "default"), container, Text.translatable("resourcePack.munchmunch.default.name"), ResourcePackActivationType.DEFAULT_ENABLED);
+			ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(MOD_ID, "default"), container, Text.translatable("resourcePack.munchmunch.default.name"), ResourcePackActivationType.DEFAULT_ENABLED);
 		});
 
 		UseItemCallback.EVENT.register(MunchMunchClient::onUseItem);

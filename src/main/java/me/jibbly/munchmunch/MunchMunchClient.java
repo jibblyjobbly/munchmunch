@@ -12,8 +12,7 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute;
@@ -22,9 +21,6 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,10 +29,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.WorldSavePath;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -87,12 +80,7 @@ public class MunchMunchClient implements ClientModInitializer {
 
 		UseItemCallback.EVENT.register(MunchMunchClient::onUseItem);
 
-		HudLayerRegistrationCallback.EVENT.register(drawer -> {
-			MinecraftClient client = MinecraftClient.getInstance();
-			if (client != null) {
-				drawer.attachLayerBefore(IdentifiedLayer.HOTBAR_AND_BARS, HUNGER_LAYER, HungerRenderer::render);
-			}
-		});
+		HudRenderCallback.EVENT.register(new HungerRenderer());
 
 		ClientLifecycleEvents.CLIENT_STARTED.register(client -> {
 			if (!cleanupPerformedThisSession) {
@@ -128,15 +116,15 @@ public class MunchMunchClient implements ClientModInitializer {
 
 	public static MunchMunchConfig getConfig() { return config; }
 
-	private static ActionResult onUseItem(PlayerEntity player, World world, Hand hand) {
+	private static TypedActionResult<ItemStack> onUseItem(PlayerEntity player, World world, Hand hand) {
 		if (world.isClient) {
-			ItemStack stack = player.getStackInHand(hand);
-			if (stack.contains(DataComponentTypes.FOOD)) {
-				lastUsed = stack.getItem();
+			Item item = player.getStackInHand(hand).getItem();
+			if (item.getFoodComponent() != null) {
+				lastUsed = item;
 			}
 		}
 
-		return ActionResult.PASS;
+		return TypedActionResult.pass(ItemStack.EMPTY);
 	}
 
 	private static void onClientEndTick(MinecraftClient client) {

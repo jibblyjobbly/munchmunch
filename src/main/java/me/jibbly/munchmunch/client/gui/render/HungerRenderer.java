@@ -6,6 +6,7 @@ import me.jibbly.munchmunch.client.resource.FoodResource;
 import me.jibbly.munchmunch.client.resource.HungerIconResourceListener;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderLayer;
@@ -16,7 +17,7 @@ import net.minecraft.util.Identifier;
 import org.joml.Vector2f;
 
 @Environment(EnvType.CLIENT)
-public class HungerRenderer {
+public class HungerRenderer implements HudRenderCallback {
     public static final int ICON_COUNT = 10;
     public static final int ICON_WIDTH = 9;
     public static final int ICON_HEIGHT = 9;
@@ -24,11 +25,12 @@ public class HungerRenderer {
 
     private static final AnimationManager animationManager = new AnimationManager();
 
-    public static void render(DrawContext context, RenderTickCounter tickCounter) {
+    @Override
+    public void onHudRender(DrawContext context, float tickDelta) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null || client.world == null) return;
 
-        float time = client.world.getTime() + tickCounter.getDynamicDeltaTicks();
+        float time = client.world.getTime() + tickDelta;
 
         for (int slot = 0; slot < ICON_COUNT; ++slot) {
             Vector2f offset = animationManager.computeOffsets(slot, time);
@@ -62,10 +64,10 @@ public class HungerRenderer {
         context.getMatrices().translate(-(iconX + ICON_WIDTH / 2.0f), -(iconY + ICON_HEIGHT / 2.0f), 0);
 
         if (client.player != null && client.interactionManager != null && client.interactionManager.getCurrentGameMode().isSurvivalLike()) {
-            context.drawTexture(RenderLayer::getGuiTextured, backgroundIcon, iconX, iconY, 0, 0, ICON_WIDTH, ICON_HEIGHT, ICON_WIDTH, ICON_HEIGHT);
+            context.drawTexture(backgroundIcon, iconX, iconY, 0, 0, ICON_WIDTH, ICON_HEIGHT, ICON_WIDTH, ICON_HEIGHT);
 
             if (foregroundIcon != null) {
-                context.drawTexture(RenderLayer::getGuiTextured, foregroundIcon, iconX, iconY, 0, 0, ICON_WIDTH, ICON_HEIGHT, ICON_WIDTH, ICON_HEIGHT);
+                context.drawTexture(foregroundIcon, iconX, iconY, 0, 0, ICON_WIDTH, ICON_HEIGHT, ICON_WIDTH, ICON_HEIGHT);
             }
         }
 
